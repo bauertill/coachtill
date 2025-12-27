@@ -16,8 +16,8 @@ _Estimated: 1 week_
 
 - [x] Initialize T3 app with `create-t3-app`
 - [x] Configure TypeScript strict mode
-- [ ] Set up ESLint and Prettier
-- [ ] Configure Tailwind with custom theme (colors, typography)
+- [x] Set up ESLint and Prettier
+- [x] Configure Tailwind with custom theme (colors, typography) + shadcn/ui
 - [ ] Set up environment variables structure
 
 ### 1.2 Database Design & Setup

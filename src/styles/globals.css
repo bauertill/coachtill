@@ -1,102 +1,229 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
-@theme {
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  /* Border radius */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+
   /* Fonts */
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  
-  /* Primary - Warm Teal (Trust, Growth) */
-  --color-primary-50: #f0fdfa;
-  --color-primary-100: #ccfbf1;
-  --color-primary-200: #99f6e4;
-  --color-primary-300: #5eead4;
-  --color-primary-400: #2dd4bf;
-  --color-primary-500: #14b8a6;
-  --color-primary-600: #0d9488;
-  --color-primary-700: #0f766e;
-  --color-primary-800: #115e59;
-  --color-primary-900: #134e4a;
-  --color-primary-950: #042f2e;
 
-  /* Secondary - Warm Amber (Energy, Motivation) */
-  --color-secondary-50: #fffbeb;
-  --color-secondary-100: #fef3c7;
-  --color-secondary-200: #fde68a;
-  --color-secondary-300: #fcd34d;
-  --color-secondary-400: #fbbf24;
-  --color-secondary-500: #f59e0b;
-  --color-secondary-600: #d97706;
-  --color-secondary-700: #b45309;
-  --color-secondary-800: #92400e;
-  --color-secondary-900: #78350f;
-  --color-secondary-950: #451a03;
+  /* shadcn semantic colors */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
 
-  /* Accent - Soft Purple (Wisdom, Reflection) */
-  --color-accent-50: #faf5ff;
-  --color-accent-100: #f3e8ff;
-  --color-accent-200: #e9d5ff;
-  --color-accent-300: #d8b4fe;
-  --color-accent-400: #c084fc;
-  --color-accent-500: #a855f7;
-  --color-accent-600: #9333ea;
-  --color-accent-700: #7c3aed;
-  --color-accent-800: #6b21a8;
-  --color-accent-900: #581c87;
-  --color-accent-950: #3b0764;
+  /* CoachTill brand colors - available as utility classes */
+  /* Teal (Trust, Growth) */
+  --color-teal-50: oklch(0.97 0.02 180);
+  --color-teal-100: oklch(0.94 0.04 180);
+  --color-teal-200: oklch(0.88 0.08 175);
+  --color-teal-300: oklch(0.82 0.12 172);
+  --color-teal-400: oklch(0.75 0.14 170);
+  --color-teal-500: oklch(0.65 0.14 170);
+  --color-teal-600: oklch(0.55 0.12 172);
+  --color-teal-700: oklch(0.48 0.10 173);
+  --color-teal-800: oklch(0.40 0.08 175);
+  --color-teal-900: oklch(0.33 0.06 176);
+  --color-teal-950: oklch(0.22 0.04 178);
 
-  /* Success - Green */
-  --color-success-500: #22c55e;
-  --color-success-600: #16a34a;
+  /* Amber (Energy, Motivation) */
+  --color-amber-50: oklch(0.99 0.02 95);
+  --color-amber-100: oklch(0.96 0.05 92);
+  --color-amber-200: oklch(0.92 0.10 88);
+  --color-amber-300: oklch(0.87 0.15 80);
+  --color-amber-400: oklch(0.82 0.18 75);
+  --color-amber-500: oklch(0.75 0.18 65);
+  --color-amber-600: oklch(0.68 0.17 55);
+  --color-amber-700: oklch(0.58 0.15 48);
+  --color-amber-800: oklch(0.48 0.12 42);
+  --color-amber-900: oklch(0.40 0.10 38);
+  --color-amber-950: oklch(0.28 0.07 35);
 
-  /* Warning - Orange */
-  --color-warning-500: #f97316;
-  --color-warning-600: #ea580c;
+  /* Violet (Wisdom, Reflection) */
+  --color-violet-50: oklch(0.98 0.01 300);
+  --color-violet-100: oklch(0.95 0.03 295);
+  --color-violet-200: oklch(0.90 0.06 290);
+  --color-violet-300: oklch(0.82 0.10 285);
+  --color-violet-400: oklch(0.72 0.15 282);
+  --color-violet-500: oklch(0.62 0.18 280);
+  --color-violet-600: oklch(0.52 0.20 278);
+  --color-violet-700: oklch(0.48 0.22 277);
+  --color-violet-800: oklch(0.40 0.18 280);
+  --color-violet-900: oklch(0.32 0.14 282);
+  --color-violet-950: oklch(0.22 0.10 285);
 
-  /* Error - Red */
-  --color-error-500: #ef4444;
-  --color-error-600: #dc2626;
+  /* Success */
+  --color-success: oklch(0.65 0.19 145);
+  --color-success-foreground: oklch(0.98 0 0);
 
-  /* Neutral - Warm Gray */
-  --color-neutral-50: #fafaf9;
-  --color-neutral-100: #f5f5f4;
-  --color-neutral-200: #e7e5e4;
-  --color-neutral-300: #d6d3d1;
-  --color-neutral-400: #a8a29e;
-  --color-neutral-500: #78716c;
-  --color-neutral-600: #57534e;
-  --color-neutral-700: #44403c;
-  --color-neutral-800: #292524;
-  --color-neutral-900: #1c1917;
-  --color-neutral-950: #0c0a09;
+  /* Warning */
+  --color-warning: oklch(0.72 0.19 50);
+  --color-warning-foreground: oklch(0.25 0.05 40);
 }
 
-/* Custom utility classes */
-@layer components {
-  .btn-primary {
-    @apply bg-primary-600 text-white px-4 py-2 rounded-lg font-medium 
-           hover:bg-primary-700 transition-colors duration-200
-           focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
-  }
+/* 
+ * CoachTill Light Theme
+ * Primary: Teal - Trust & Growth
+ * Secondary: Amber accents - Energy & Motivation  
+ * Accent: Violet highlights - Wisdom & Reflection
+ */
+:root {
+  --radius: 0.5rem;
 
-  .btn-secondary {
-    @apply bg-secondary-500 text-white px-4 py-2 rounded-lg font-medium 
-           hover:bg-secondary-600 transition-colors duration-200
-           focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:ring-offset-2;
-  }
+  /* Base */
+  --background: oklch(0.99 0.005 90);
+  --foreground: oklch(0.20 0.02 60);
 
-  .btn-outline {
-    @apply border-2 border-primary-600 text-primary-600 px-4 py-2 rounded-lg font-medium 
-           hover:bg-primary-50 transition-colors duration-200
-           focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
-  }
+  /* Card - slightly warm white */
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.20 0.02 60);
 
-  .card {
-    @apply bg-white rounded-xl shadow-sm border border-neutral-200 p-6;
-  }
+  /* Popover */
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.20 0.02 60);
 
-  .input {
-    @apply w-full px-4 py-2 border border-neutral-300 rounded-lg 
-           focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent
-           placeholder:text-neutral-400;
+  /* Primary - Teal */
+  --primary: oklch(0.55 0.12 172);
+  --primary-foreground: oklch(0.99 0 0);
+
+  /* Secondary - Warm neutral with amber tint */
+  --secondary: oklch(0.96 0.01 80);
+  --secondary-foreground: oklch(0.30 0.03 60);
+
+  /* Muted */
+  --muted: oklch(0.94 0.008 80);
+  --muted-foreground: oklch(0.50 0.02 60);
+
+  /* Accent - Violet */
+  --accent: oklch(0.92 0.04 290);
+  --accent-foreground: oklch(0.40 0.15 280);
+
+  /* Destructive */
+  --destructive: oklch(0.55 0.22 25);
+
+  /* Borders & Inputs */
+  --border: oklch(0.88 0.01 80);
+  --input: oklch(0.92 0.008 80);
+  --ring: oklch(0.55 0.12 172);
+
+  /* Charts - CoachTill palette */
+  --chart-1: oklch(0.55 0.12 172);
+  --chart-2: oklch(0.75 0.18 65);
+  --chart-3: oklch(0.52 0.20 278);
+  --chart-4: oklch(0.65 0.19 145);
+  --chart-5: oklch(0.72 0.19 50);
+
+  /* Sidebar */
+  --sidebar: oklch(0.98 0.008 90);
+  --sidebar-foreground: oklch(0.20 0.02 60);
+  --sidebar-primary: oklch(0.55 0.12 172);
+  --sidebar-primary-foreground: oklch(0.99 0 0);
+  --sidebar-accent: oklch(0.94 0.02 172);
+  --sidebar-accent-foreground: oklch(0.48 0.10 173);
+  --sidebar-border: oklch(0.90 0.01 80);
+  --sidebar-ring: oklch(0.55 0.12 172);
+}
+
+/* 
+ * CoachTill Dark Theme
+ * Deep, calming tones for evening reflection
+ */
+.dark {
+  /* Base - Deep warm charcoal */
+  --background: oklch(0.16 0.015 60);
+  --foreground: oklch(0.95 0.008 80);
+
+  /* Card */
+  --card: oklch(0.20 0.015 60);
+  --card-foreground: oklch(0.95 0.008 80);
+
+  /* Popover */
+  --popover: oklch(0.22 0.015 60);
+  --popover-foreground: oklch(0.95 0.008 80);
+
+  /* Primary - Brighter teal for dark mode */
+  --primary: oklch(0.72 0.14 172);
+  --primary-foreground: oklch(0.16 0.015 60);
+
+  /* Secondary */
+  --secondary: oklch(0.26 0.015 60);
+  --secondary-foreground: oklch(0.92 0.008 80);
+
+  /* Muted */
+  --muted: oklch(0.28 0.015 60);
+  --muted-foreground: oklch(0.65 0.01 80);
+
+  /* Accent - Lighter violet */
+  --accent: oklch(0.30 0.08 285);
+  --accent-foreground: oklch(0.82 0.10 285);
+
+  /* Destructive */
+  --destructive: oklch(0.65 0.22 22);
+
+  /* Borders & Inputs */
+  --border: oklch(0.30 0.015 60);
+  --input: oklch(0.28 0.015 60);
+  --ring: oklch(0.72 0.14 172);
+
+  /* Charts */
+  --chart-1: oklch(0.72 0.14 172);
+  --chart-2: oklch(0.78 0.16 70);
+  --chart-3: oklch(0.68 0.18 282);
+  --chart-4: oklch(0.70 0.17 145);
+  --chart-5: oklch(0.75 0.17 55);
+
+  /* Sidebar */
+  --sidebar: oklch(0.18 0.015 60);
+  --sidebar-foreground: oklch(0.95 0.008 80);
+  --sidebar-primary: oklch(0.72 0.14 172);
+  --sidebar-primary-foreground: oklch(0.16 0.015 60);
+  --sidebar-accent: oklch(0.28 0.04 172);
+  --sidebar-accent-foreground: oklch(0.72 0.14 172);
+  --sidebar-border: oklch(0.30 0.015 60);
+  --sidebar-ring: oklch(0.72 0.14 172);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
   }
 }
