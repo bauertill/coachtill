@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+.next/
+out/
+build/
+dist/
+
+# Generated files
+generated/
+*.generated.ts
+*.generated.js
+
+# Prisma
+prisma/migrations/
+
+# Package manager
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+
+# Other
+.git/
+.env*
+*.min.js
+*.min.css
+
