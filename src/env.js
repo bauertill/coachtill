@@ -7,10 +7,34 @@ export const env = createEnv({
    * isn't built with invalid env vars.
    */
   server: {
-    AUTH_SECRET: process.env.NODE_ENV === "production" ? z.string() : z.string().optional(),
-    AUTH_DISCORD_ID: z.string(),
-    AUTH_DISCORD_SECRET: z.string(),
+    // Database
     DATABASE_URL: z.string().url(),
+    
+    // NextAuth
+    AUTH_SECRET: process.env.NODE_ENV === "production" ? z.string() : z.string().optional(),
+    AUTH_URL: z.string().url().optional(),
+    
+    // OAuth Providers
+    AUTH_GOOGLE_ID: z.string().optional(),
+    AUTH_GOOGLE_SECRET: z.string().optional(),
+    AUTH_DISCORD_ID: z.string().optional(),
+    AUTH_DISCORD_SECRET: z.string().optional(),
+    
+    // Email (for magic links)
+    EMAIL_SERVER: z.string().optional(),
+    EMAIL_FROM: z.string().email().optional(),
+    
+    // AI Integration
+    OPENAI_API_KEY: z.string().optional(),
+    
+    // File Upload (optional - for avatar uploads)
+    UPLOADTHING_SECRET: z.string().optional(),
+    UPLOADTHING_APP_ID: z.string().optional(),
+    
+    // Monitoring & Error Tracking (optional)
+    SENTRY_DSN: z.string().url().optional(),
+    
+    // Node Environment
     NODE_ENV: z.enum(["development", "test", "production"]).default("development"),
   },
 
@@ -20,7 +44,7 @@ export const env = createEnv({
    * `NEXT_PUBLIC_`.
    */
   client: {
-    // NEXT_PUBLIC_CLIENTVAR: z.string(),
+    NEXT_PUBLIC_SENTRY_DSN: z.string().url().optional(),
   },
 
   /**
@@ -28,10 +52,35 @@ export const env = createEnv({
    * middlewares) or client-side so we need to destruct manually.
    */
   runtimeEnv: {
+    // Database
+    DATABASE_URL: process.env.DATABASE_URL,
+    
+    // NextAuth
     AUTH_SECRET: process.env.AUTH_SECRET,
+    AUTH_URL: process.env.AUTH_URL,
+    
+    // OAuth Providers
+    AUTH_GOOGLE_ID: process.env.AUTH_GOOGLE_ID,
+    AUTH_GOOGLE_SECRET: process.env.AUTH_GOOGLE_SECRET,
     AUTH_DISCORD_ID: process.env.AUTH_DISCORD_ID,
     AUTH_DISCORD_SECRET: process.env.AUTH_DISCORD_SECRET,
-    DATABASE_URL: process.env.DATABASE_URL,
+    
+    // Email
+    EMAIL_SERVER: process.env.EMAIL_SERVER,
+    EMAIL_FROM: process.env.EMAIL_FROM,
+    
+    // AI Integration
+    OPENAI_API_KEY: process.env.OPENAI_API_KEY,
+    
+    // File Upload
+    UPLOADTHING_SECRET: process.env.UPLOADTHING_SECRET,
+    UPLOADTHING_APP_ID: process.env.UPLOADTHING_APP_ID,
+    
+    // Monitoring
+    SENTRY_DSN: process.env.SENTRY_DSN,
+    NEXT_PUBLIC_SENTRY_DSN: process.env.NEXT_PUBLIC_SENTRY_DSN,
+    
+    // Node Environment
     NODE_ENV: process.env.NODE_ENV,
   },
   /**
