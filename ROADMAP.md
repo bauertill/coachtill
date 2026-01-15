@@ -18,23 +18,19 @@ _Estimated: 1 week_
 - [x] Configure TypeScript strict mode
 - [x] Set up ESLint and Prettier
 - [x] Configure Tailwind with custom theme (colors, typography) + shadcn/ui
-- [ ] Set up environment variables structure
+- [x] Set up environment variables structure
 
-### 1.2 Database Design & Setup
+### 1.2 Vercel Infrastructure & Database
 
-- [ ] Design complete database schema (see schema section below)
-- [ ] Set up PostgreSQL database (Supabase/PlanetScale/Neon)
-- [ ] Configure Prisma with connection pooling
-- [ ] Create initial migrations
-- [ ] Seed database with test data
-
-### 1.3 Development Infrastructure
-
-- [ ] Set up Git repository and branching strategy
-- [ ] Configure CI/CD pipeline (GitHub Actions)
-- [ ] Set up staging environment
-- [ ] Configure error tracking (Sentry)
-- [ ] Set up logging infrastructure
+- [x] Design complete database schema (Prisma)
+- [x] Create seed script with test data
+- [x] Configure Sentry error tracking
+- [x] Set up GitHub Actions CI (lint, typecheck, build)
+- [ ] Deploy to Vercel
+- [ ] Create Vercel Postgres database (Neon-powered)
+- [ ] Configure environment variables in Vercel
+- [ ] Run initial database migration
+- [ ] Connect custom domain (optional)
 
 ---
 
@@ -593,11 +589,12 @@ enum NotificationType {
 
 ## Next Steps
 
-1. [ ] Review and finalize this roadmap
-2. [ ] Set up the T3 project
-3. [ ] Configure database and create schema
-4. [ ] Begin Epic 1 implementation
+1. [x] Review and finalize this roadmap
+2. [x] Set up the T3 project
+3. [x] Design database schema
+4. [ ] Deploy to Vercel and create database
+5. [ ] Complete Epic 2 (Authentication)
 
 ---
 
-_Last Updated: December 27, 2024_
+_Last Updated: January 15, 2026_
