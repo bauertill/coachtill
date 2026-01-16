@@ -17,9 +17,9 @@
 ### 1. Deploy to Vercel
 
 - [x] Deploy app to Vercel
-- [ ] Create Vercel Postgres database
-- [ ] Set environment variables in Vercel
-- [ ] Run initial database migration
+- [x] Create Vercel Postgres database
+- [x] Set environment variables in Vercel
+- [x] Run initial database migration
 
 ### 2. Complete sign-up flow
 
