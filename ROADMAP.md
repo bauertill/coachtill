@@ -23,13 +23,13 @@
 
 ### 2. Complete sign-up flow
 
-- [ ] Add role selection (Mentor/Student) after first OAuth sign-in
-- [ ] Create onboarding page that collects role and saves to user record
+- [x] Add role selection (Mentor/Student) after first OAuth sign-in
+- [x] Create onboarding page that collects role and saves to user record
 
 ### 3. Add protected route middleware
 
-- [ ] Create middleware to redirect unauthenticated users to sign-in
-- [ ] Redirect users without role to onboarding page
+- [x] Create middleware to redirect unauthenticated users to sign-in
+- [x] Redirect users without role to onboarding page
 
 ### 4. Build profile setup page
 

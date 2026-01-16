@@ -46,7 +46,7 @@ export default async function SignInPage() {
                     key={provider.id}
                     action={async () => {
                       "use server";
-                      await signIn(provider.id, { redirectTo: "/" });
+                      await signIn(provider.id, { redirectTo: "/dashboard" });
                     }}
                   >
                     <Button type="submit" variant="outline" className="w-full gap-2" size="lg">
